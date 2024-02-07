@@ -10,7 +10,7 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["RestoreOnKubernetes/RestoreOnKubernetes.csproj", "RestoreOnKubernetes/"]
-RUN dotnet restore "./RestoreOnKubernetes/./RestoreOnKubernetes.csproj"
+RUN dotnet restore "./RestoreOnKubernetes/RestoreOnKubernetes.csproj"
 COPY . .
 WORKDIR "/src/RestoreOnKubernetes"
 RUN dotnet build "./RestoreOnKubernetes.csproj" -c $BUILD_CONFIGURATION -o /app/build
